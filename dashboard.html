@@ -1,0 +1,17 @@
+<h2>Participants</h2>
+
+{% for u in users %}
+<p>
+    {{u[1]}}
+    {% if u[4] == 0 %}
+        <a href="/attend/{{u[0]}}/{{event_id}}">
+            Mark Present
+        </a>
+    {% else %}
+        Present |
+        <a href="/certificate/{{u[0]}}">
+            Generate Certificate
+        </a>
+    {% endif %}
+</p>
+{% endfor %}

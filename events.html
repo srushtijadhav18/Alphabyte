@@ -1,0 +1,40 @@
+<h1>Campus Events</h1>
+
+<div class="events">
+    {% for event in events %}
+        <div class="event-card">
+            <h3>{{ event.title }}</h3>
+            <p><b>Club:</b> {{ event.club }}</p>
+            <p><b>Date:</b> {{ event.date }}</p>
+            <p>{{ event.description }}</p>
+        </div>
+    {% endfor %}
+</div>
+<h2>College Events</h2>
+
+<!-- Club Filter -->
+<form method="GET">
+    <select name="club">
+        <option value="">All Clubs</option>
+        {% for c in clubs %}
+            <option value="{{c['club']}}">{{c['club']}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<hr>
+
+<!-- Event Cards -->
+{% for e in events %}
+<div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <h3>{{e['title']}}</h3>
+    <p><b>Club:</b> {{e['club']}}</p>
+    <p><b>Date:</b> {{e['date']}}</p>
+    <p>{{e['description']}}</p>
+
+    <a href="/register/{{e['id']}}">
+        <button>Register</button>
+    </a>
+</div>
+{% endfor %}

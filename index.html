@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Event Manager</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .hero {
+            background: url("https://th.bing.com/th/id/R.8a7bb6d7dc065f51e8859460824a0a4f?rik=CEK2M96ICEXlQg&riu=http%3a%2f%2fpcet.org.in%2fimages%2finstitutes%2fpccoe-pcet-institute.webp&ehk=U%2bReO4tLTiFUt49GxaYIB8fegKjPCWc6rFYcJ%2f%2byP%2bA%3d&risl=&pid=ImgRaw&r=0")
+                        center/cover no-repeat;
+            height: 85vh;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<!-- Header -->
+<div class="container-fluid bg-light py-2 px-4">
+
+    <!-- Top Login Button -->
+    <div class="d-flex justify-content-end mb-2">
+        <a href="#" class="btn btn-primary">
+            Administrative Login
+        </a>
+    </div>
+
+    <!-- Main Navbar -->
+    <div class="d-flex align-items-center">
+
+        <!-- Logo -->
+        <div class="me-4">
+            <h3 class="fw-bold m-0">PCCOE's EventsManager</h3>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="d-flex gap-4">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#events" class="nav-link">Events</a>
+            <a href="#" class="nav-link">Sponsors</a>
+            <a href="#" class="nav-link">Contact</a>
+        </div>
+
+        <!-- Right Buttons -->
+        <div class="ms-auto">
+            <a href="#" class="btn btn-primary me-2">Register</a>
+            <a href="#" class="btn btn-primary">Log In</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-text">
+        <h1>College Event Management System</h1>
+        <p>Manage events, registrations, attendance & certificates</p>
+        <a href="#events" class="btn btn-lg btn-primary mt-3">
+            Explore Events
+        </a>
+    </div>
+</div>
+
+<!-- About Section -->
+<section class="container mt-5">
+    <h2 class="text-center mb-4">About Us</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <p>
+                Our College Campus Event Management System allows clubs and
+                students to seamlessly organize and participate in campus
+                activities.
+            </p>
+
+            <p>
+                From registrations and attendance tracking to automated
+                certificate generation, the system removes manual workload
+                and improves event experience.
+            </p>
+
+            <p>
+                Designed for hackathons and campuses to manage thousands of
+                participants efficiently.
+            </p>
+        </div>
+
+        <div class="col-md-6 text-center">
+            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94"
+                 class="img-fluid rounded">
+        </div>
+    </div>
+</section>
+
+
+<!-- Events Section -->
+<!-- Events Section -->
+<section class="container mt-5" id="events">
+
+<h2 class="text-center mb-4">View Events</h2>
+
+<div class="row">
+
+{% for e in events %}
+<div class="col-md-4 mb-4">
+    <div class="card shadow h-100">
+
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865"
+             class="card-img-top">
+
+        <div class="card-body">
+            <h5 class="card-title">{{e[1]}}</h5>
+            <p class="card-text">Event Date: {{e[2]}}</p>
+
+            <a href="/register/{{e[0]}}"
+               class="btn btn-primary w-100 mb-2">
+               Register Now
+            </a>
+
+            <a href="/dashboard/{{e[0]}}"
+               class="btn btn-dark w-100">
+               Admin Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+</div>
+</section>
+
+
+</body>
+</html>
